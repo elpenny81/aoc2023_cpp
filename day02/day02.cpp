@@ -56,13 +56,13 @@ QString part1(const QString &fileName)
     };
 
     return process(
-        [&maxScores](quint32 gameId, const QString &game) {
+        [&maxScores](const int gameId, const QString &game) {
             if (const auto scores = maxScoresFromGame(game);
                 scores[Color::red] <= maxScores[Color::red] && scores[Color::green] <= maxScores[Color::green]
                 && scores[Color::blue] <= maxScores[Color::blue]) {
                 return gameId;
             }
-            return static_cast<quint32>(0);
+            return 0;
         },
         fileName);
 }
@@ -70,7 +70,7 @@ QString part1(const QString &fileName)
 QString part2(const QString &fileName)
 {
     return process(
-        [](quint32, const QString &game) {
+        [](const int, const QString &game) {
             const auto scores = maxScoresFromGame(game);
             return scores[Color::red] * scores[Color::green] * scores[Color::blue];
         },
