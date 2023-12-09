@@ -1,7 +1,11 @@
+#include "literals.h"
+
 #include <QDebug>
 #include <QFile>
 #include <QString>
 #include <QVector>
+
+using namespace utils::literals::integer;
 
 namespace Day05 {
 
@@ -47,7 +51,7 @@ struct RangeMap
     {
         auto st = qMax(in.start, start);
         auto en = qMin(in.end(), end());
-        return {st, qMax(en - st, static_cast<qint64>(0)), 0};
+        return {st, qMax(en - st, 0_i64), 0};
     }
 
     [[nodiscard]] QVector<RangeMap> nonMappedRanges(const RangeMap &in) const
@@ -57,10 +61,10 @@ struct RangeMap
             return {in};
 
         if (in.start < start && in.end() > start)
-            ret.append({in.start, qMax(start - in.start, static_cast<qint64>(0)), in.target});
+            ret.append({in.start, qMax(start - in.start, 0_i64), in.target});
 
         if (in.end() > end() && in.start < end())
-            ret.append({end(), qMax(in.end() - end(), static_cast<qint64>(0)), in.target});
+            ret.append({end(), qMax(in.end() - end(), 0_i64), in.target});
 
         return ret;
     }

@@ -1,7 +1,11 @@
+#include "literals.h"
+
 #include <QDebug>
 #include <QFile>
 #include <QString>
 #include <QVector>
+
+using namespace utils::literals::integer;
 
 namespace Day06 {
 
@@ -72,7 +76,7 @@ QString part1(const QString &fileName)
 {
     auto races = parseRaces(fileName);
     return QString::number(
-        std::accumulate(races.begin(), races.end(), static_cast<qint64>(1), [](qint64 i, const Race &race) {
+        std::accumulate(races.begin(), races.end(), 1_i64, [](qint64 i, const Race &race) {
             return i * race.betterDistances();
         }));
 }

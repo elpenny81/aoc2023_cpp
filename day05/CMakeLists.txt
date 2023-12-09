@@ -5,6 +5,12 @@ add_executable(
         resources.qrc
 )
 
+target_include_directories(
+        day05
+        PRIVATE
+        ${CMAKE_SOURCE_DIR}/utils
+)
+
 target_link_libraries(
         day05
         PRIVATE
