@@ -1,0 +1,6 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>input.txt</file>
+    <file>input_example.txt</file>
+</qresource>
+</RCC>
