@@ -2,6 +2,7 @@
 
 #include <numeric>
 #include <utility>
+#include <QVector>
 
 namespace utils {
 
@@ -48,6 +49,27 @@ auto sum(Iterable &&iter)
 {
     using T = typename std::remove_reference<decltype(*std::begin(iter))>::type;
     return std::accumulate(std::begin(iter), std::end(iter), T{});
+}
+
+template<typename T, typename U>
+QVector<std::pair<T, U>> zip(const QVector<T> &v1, const QVector<U> &v2)
+{
+    QVector<std::pair<T, U>> result;
+    auto                     size = std::min(v1.size(), v2.size());
+    result.reserve(size);
+    for (int i = 0; i < size; ++i)
+        result.append({v1[i], v2[i]});
+    return result;
+}
+
+QVector<std::pair<QChar, QChar>> zip(const QString &v1, const QString &v2)
+{
+    QVector<std::pair<QChar, QChar>> result;
+    auto                             size = std::min(v1.size(), v2.size());
+    result.reserve(size);
+    for (int i = 0; i < size; ++i)
+        result.append({v1[i], v2[i]});
+    return result;
 }
 
 } // namespace utils
