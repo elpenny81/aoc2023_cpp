@@ -1,4 +1,4 @@
-add_executable(
+qt_add_executable(
         day10
         day10.cpp
         resources.qrc
@@ -13,5 +13,5 @@ target_include_directories(
 target_link_libraries(
         day10
         PRIVATE
-        Qt5::Core
+        Qt6::Core
 )

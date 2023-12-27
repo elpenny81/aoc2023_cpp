@@ -59,7 +59,7 @@ QString part2(const QString &fileName)
     while (!file.atEnd())
         lines.append(file.readLine().trimmed());
 
-    QVector instances(lines.size(), 1);
+    QVector<int> instances(lines.size(), 1);
     for (int curLine = 0; curLine < lines.size(); curLine++) {
         const auto &[winningNumbers, numbers] = parseLine(lines.at(curLine));
         const auto matchedNumbers             = intersect(winningNumbers, numbers);

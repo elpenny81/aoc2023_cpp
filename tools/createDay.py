@@ -51,7 +51,7 @@ target_include_directories(
 target_link_libraries(
         day{day:02d}
         PRIVATE
-        Qt5::Core
+        Qt6::Core
 )
 """)
         with open(dir_name + "/resources.qrc", 'w') as f:
